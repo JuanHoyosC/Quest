@@ -1,0 +1,87 @@
+.p-input-phone {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.autocomplete-country-input {
+  border: 1px solid var(--p-inputtext-border-color);
+  width: 100%;
+  border-radius: 8px;
+}
+
+.autocomplete-country-input.focus {
+  border-color: var(--p-inputtext-focus-border-color);
+  .autocomplete-country-input-dropdown-icon {
+    color: var(--p-inputtext-focus-border-color);
+  }
+}
+
+.autocomplete-country-input-flag {
+  display: block;
+  margin: 0 8px;
+  min-width: 18px;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.w-full {
+  width: 100%;
+}
+:host ::ng-deep {
+  p-inputmask .p-inputtext {
+    width: 100%;
+  }
+  .autocomplete-country-input {
+    p-autocomplete {
+      &,
+      .p-autocomplete {
+        width: 100%;
+      }
+      .p-inputtext {
+        padding-left: 0;
+        border: none;
+        text-overflow: ellipsis;
+      }
+      .p-inputtext:enabled:focus {
+        outline: none;
+      }
+
+      .p-autocomplete-dropdown {
+        border: none;
+        &,
+        &:hover {
+          background: transparent;
+        }
+      }
+
+      .p-overlay {
+        max-width: calc(100% + 38px);
+        width: calc(100% + 38px);
+        top: 56px !important;
+        left: -38px !important;
+      }
+    }
+  }
+}
+
+.autocomplete-country-input-dropdown-icon {
+  font-size: 1.25rem;
+  transition: transform 0.25s linear;
+}
+
+.autocomplete-country-input-dropdown-icon.open {
+  transform: rotate(180deg);
+}
+
+.text-overflow {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.fi {
+  display: block;
+  min-width: 18px;
+}

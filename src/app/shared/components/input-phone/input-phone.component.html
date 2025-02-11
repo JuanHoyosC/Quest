@@ -1,0 +1,63 @@
+<div class="p-input-phone">
+  <div
+    class="flex items-center autocomplete-country-input"
+    [class.focus]="isCountryInputFocus()"
+  >
+    <span
+      class="autocomplete-country-input-flag fi"
+      [class]="'fi-' + selectedCountry()?.iso?.toLowerCase()"
+    ></span>
+    <p-autocomplete
+      [(ngModel)]="selectedCountry"
+      [dropdown]="true"
+      [dropdownMode]="'blank'"
+      [placeholder]="'Select country'"
+      [forceSelection]="true"
+      [suggestions]="filteredCountries()"
+      (completeMethod)="onFilterCountry($event)"
+      (onSelect)="onSelectedCountry()"
+      (onShow)="isDropdownOpen.set(true)"
+      (onHide)="isDropdownOpen.set(false)"
+      (onFocus)="isCountryInputFocus.set(true)"
+      (onBlur)="isCountryInputFocus.set(false)"
+      (click)="onOpenSuggestions()"
+      (keydown.enter)="onOpenSuggestions()"
+      optionLabel="name"
+      #autoComplete
+    >
+      <ng-template pTemplate="dropdownicon">
+        <div
+          class="autocomplete-country-input-dropdown-icon"
+          [class.open]="isDropdownOpen()"
+        >
+          <ng-icon name="heroChevronDown"></ng-icon>
+        </div>
+      </ng-template>
+      <ng-template let-country #item>
+        <div class="flex items-center justify-between w-full gap-2">
+          <div class="flex items-center gap-2 text-overflow">
+            <span class="fi" [class]="'fi-' + country.iso.toLowerCase()"></span>
+            <div class="text-overflow">{{ country.name }}</div>
+          </div>
+          <span>(+{{ country.dialCode }})</span>
+        </div>
+      </ng-template>
+      <ng-template #header>
+        <div class="font-medium px-3 py-2">Available Countries</div>
+      </ng-template>
+    </p-autocomplete>
+  </div>
+  <p-inputmask
+    [mask]="selectedCountry()?.mask ?? '+999999999999999'"
+    [autoClear]="false"
+    [formControl]="phone"
+    [placeholder]="selectedCountry()?.placeholder"
+    (paste)="onPhonePaste($event)"
+    (onInput)="onInput($event)"
+    [inputId]="inputId()"
+    [unmask]="false"
+    slotChar="-"
+    #phoneMask
+  >
+  </p-inputmask>
+</div>
