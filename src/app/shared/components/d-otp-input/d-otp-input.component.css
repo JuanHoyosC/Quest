@@ -1,0 +1,9 @@
+.otp-container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+input.active {
+    @apply text-indigo-600 border-indigo-600 bg-transparent
+}
