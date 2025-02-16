@@ -1,0 +1,24 @@
+<button
+  pRipple
+  class="d-button"
+  [type]="type()"
+  [ngClass]="['px-4 py-2', severity(), styleClass()]"
+  [class.disabled]="disabled() || loading()"
+  [class.rounded]="rounded()"
+  [class.outline]="outline()"
+  [id]="appId()"
+  (click)="onClick.emit($event)"
+>
+  @if (!loading()) {
+    @if (icon()) {
+      <ng-icon [name]="icon()"></ng-icon>
+    }
+    @if (label()) {
+      <span> {{ label() }}</span>
+    }
+  }
+  @if (loading()) {
+    <d-spin></d-spin>
+    <span>Processing...</span>
+  }
+</button>

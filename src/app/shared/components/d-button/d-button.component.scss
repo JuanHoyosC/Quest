@@ -1,0 +1,76 @@
+.d-button {
+  @apply rounded-md text-sm flex items-center justify-center gap-4;
+  
+  ng-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.primary {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: transparent;
+  span {
+    color: var(--text-on-primary);
+  }
+
+  &:hover {
+    background-color: var(--primary-hover);
+  }
+
+  .p-ink {
+    background-color: var(--primary-ink);
+  }
+}
+
+.primary.outline {
+  background-color: transparent;
+  
+ span, ng-icon {
+  color: var(--primary-color);
+ }
+
+  &:hover {
+    background-color: var(--primary-outline-bg);
+  }
+
+  .p-ink {
+    background-color: var(--primary-outline-ink);
+  }
+}
+
+.danger {
+  background-color: var(--danger-color);
+  border: 1px solid var(--danger-color);
+  color: transparent;
+  span {
+    color: var(--text-on-danger);
+  }
+
+  .p-ink {
+    background-color: var(--danger-ink);
+  }
+}
+
+.danger.outline {
+  background-color: transparent;
+  span, ng-icon  {
+    color: var(--danger-color);
+  }
+
+  .p-ink {
+    background-color: var(--danger-outline-ink);
+  }
+}
+
+.rounded {
+  @apply rounded-3xl;
+}
+
+.disabled {
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
